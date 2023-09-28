@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import './navbar.css';
 
 function navbar() {
     return (
@@ -10,6 +11,7 @@ function navbar() {
                         <i className="fas fa-leaf"></i> LiveChat
                     </Link>
                 </div>
+                
             </nav>
         </>
     )
