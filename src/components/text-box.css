@@ -1,7 +1,15 @@
+.inputContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 300px;
+}
+
+
 .inputLabel{
     font-size: 1.5rem;
     font-weight: 500;
     color: #000000;
-    margin-bottom: 0.5rem;
 }
 

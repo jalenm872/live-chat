@@ -4,9 +4,12 @@ import './text-box.css';
 function UsernameBox() {
     return (
         <>
-            <label className="inputLabel">
-                Enter Username: <input type="text" name="username" />
-            </label>
+            <div className="inputContainer">
+                <label className="inputBox">
+                    <input type="text" name="username" defaultValue= "Enter Username" />
+                    <button type="submit" className="submitButton">Submit</button>
+                </label>
+            </div>
         </>
   );
 }

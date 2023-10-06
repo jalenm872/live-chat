@@ -10,8 +10,7 @@ function navbar() {
                     <Link to="/" className="navbar-logo">
                         <i className="fas fa-leaf"></i> LiveChat
                     </Link>
-                </div>
-                
+                </div> 
             </nav>
         </>
     )
