@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './components/navbar';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
-import TextBox from './components/text-box';
 import UsernameBox from './components/text-box';
 
 function App() {
