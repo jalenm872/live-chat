@@ -1,22 +1,20 @@
 import React from 'react';
 import Navbar from './components/navbar';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import './App.css';
-import UsernameBox from './components/text-box';
+import {Home} from './pages/home.js';
+import {Chat} from './pages/chat.js';
+
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' exact />
-        </Routes>
-      </Router>
-      <UsernameBox />
-      
-    </>
-      
+      <Navbar />
+      <Routes>
+        <Route exact path='/'  element={<Home />}/>
+        <Route path='/chat' element={<Chat />} />
+      </Routes>  
+    </> 
   );
 }
 
