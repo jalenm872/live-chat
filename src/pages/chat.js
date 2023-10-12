@@ -1,13 +1,13 @@
 import React from "react";
 import './chat.css'
+import ChatBox from "../components/chat-box";
+// import {ChakraProvider} from "@chakra-ui/react"
 
 export function Chat() {
   return (
     <>
-        <div className="inputContainer">
-            <h1 className="Text">Chat</h1>
-        </div>
-      
+        <h1 className="Text">Chat</h1>
+        <ChatBox />      
     </>
   );
 }
