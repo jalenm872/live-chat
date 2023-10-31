@@ -11,7 +11,25 @@
     margin-right: 10px;
 }
 
-.ChatBox{
-    margin-top: 300px;
+.messages{
+    transform: translate(-50%, -50%); 
+}
+
+.chatOutline{
+    border: 1px solid #000000;
+    outline-width: 10px;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }

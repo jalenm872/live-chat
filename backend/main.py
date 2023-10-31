@@ -29,10 +29,12 @@ app.add_middleware(
 # Create list of messages
 messages = [
     {
+        "id": 1,
         "sender": "John",
         "message": "Hello"
     },
     {
+        "id": 2,
         "sender": "Jane",
         "message": "Hi"
     }
@@ -109,7 +111,23 @@ async def get_messages() -> dict:
 # Create message
 @app.post("/messages", tags=["messages"])
 async def create_message(message: dict) -> dict:
+    message["id"] = len(messages) + 1
     messages.append(message)
     return {
         "data": "Message Sent"
+    }
+
+# Delete all messages
+@app.delete("/messages", tags=["messages"])
+async def delete_messages() -> dict:
+    messages.clear()
+    return {
+        "data": "Messages Deleted"
+    }
+
+# Get size of messages
+@app.get("/messages/size", tags=["messages"])
+async def get_messages_size() -> dict:
+    return {
+        "data": len(messages)
     }

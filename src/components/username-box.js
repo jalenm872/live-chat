@@ -1,5 +1,5 @@
 import React from "react";
-import './text-box.css';
+import './username-box.css';
 import { useNavigate } from "react-router-dom";
 
 function UsernameBox() {
@@ -16,8 +16,10 @@ function UsernameBox() {
             return;
         }
         else if (document.querySelector(".userInput").value.length < 10 && document.querySelector(".userInput").value !== "") {
-            navigate("/chat");
+            navigate("/chat", {state: {username: document.querySelector(".userInput").value}});
         }
+
+
     }
 
     return (
