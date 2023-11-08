@@ -41,18 +41,19 @@ export default function ChatBox() {
 
     return (
         <div>
-            <div>
+            <div className="messageContainer">
                 {data.map((message) => (
                     <p key={message.id}>
                         <strong>{message.sender}</strong>:
+                        {"   "}
                         {message.message}
                         <br />
                     </p>
                 ))}
             </div>
-                <div>
+            <div className="inputContainer">
                 <label>
-                    <input id="messageInput" name="messageInput" pr="4.5rem" type="text" placeholder="Enter Message" aria-label="Enter Message" />
+                    <input className="messageInput" id="messageInput" name="messageInput" pr="4.5rem" type="text" placeholder="Enter Message" aria-label="Enter Message" />
                 </label>
                 <input type="submit" value="Submit" onClick={addMessage} />
             </div>

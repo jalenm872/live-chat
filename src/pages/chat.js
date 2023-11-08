@@ -1,5 +1,4 @@
 import React from "react";
-import './chat.css'
 import ChatBox from "../components/chat-box";
 
 export function Chat() {
