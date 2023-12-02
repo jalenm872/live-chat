@@ -6,6 +6,8 @@ from pydantic import BaseModel
 
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 
 # Create FastAPI instance
 app = FastAPI()
@@ -28,16 +30,16 @@ app.add_middleware(
 
 # Create list of messages
 messages = [
-    {
-        "id": 1,
-        "sender": "John",
-        "message": "Hello"
-    },
-    {
-        "id": 2,
-        "sender": "Jane",
-        "message": "Hi"
-    }
+    # {
+    #     "id": 1,
+    #     "sender": "John",
+    #     "message": "Hello"
+    # },
+    # {
+    #     "id": 2,
+    #     "sender": "Jane",
+    #     "message": "Hi"
+    # }
 ]
 
 # Connection Manager Class
@@ -104,12 +106,13 @@ def register(user: RegisterValidator, response: Response):
 #     return templates.TemplateResponse("chat.html", {"request": request})
 
 # Get messages
-@app.get("/messages", tags=["messages"])
+@app.get("/api/messages", tags=["messages"])
 async def get_messages() -> dict:
-    return {"data": messages}
+    json_compatable_item_data = jsonable_encoder(messages)
+    return JSONResponse(content=json_compatable_item_data)
 
 # Create message
-@app.post("/messages", tags=["messages"])
+@app.post("/api/messages", tags=["messages"])
 async def create_message(message: dict) -> dict:
     message["id"] = len(messages) + 1
     messages.append(message)
@@ -118,7 +121,7 @@ async def create_message(message: dict) -> dict:
     }
 
 # Delete all messages
-@app.delete("/messages", tags=["messages"])
+@app.delete("/api/messages", tags=["messages"])
 async def delete_messages() -> dict:
     messages.clear()
     return {

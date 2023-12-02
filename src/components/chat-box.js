@@ -3,25 +3,30 @@ import './chat-box.css'
 import { useLocation } from "react-router-dom";
 
 export default function ChatBox() {
-    const url = "http://127.0.0.1:8000/messages";
+    const url = "http://127.0.0.1:8000/api/messages";
 
     const [data, setData] = useState([]);
 
     const {state} = useLocation();
-    const { username } = state; // Read values passed on state
+    const { username } = state; // Read values passed on state for username
 
-    const fetchMessages = async () => {
-        return await fetch(url)
-            .then((response) => response.json())
-            .then((data) => setData(data.data));
+    //Function to fetch messages from Postgress DB via API Get request
+    //Returning a list of objects
+    function fetchMessages() {
+        fetch(url)
+            .then(response => {
+                return response.text();
+            })
+            .then(response => 
+                JSON.parse(response)
+            )
+            .then(data => {
+                setData(data);
+            });
     }
 
-    useEffect(() => {
-        fetchMessages();
-    }, []);
-
+    //Function to add message to Postgress DB via API Post request
     function addMessage(){
-
 
         fetch(url, {
             method: "POST",
@@ -29,27 +34,41 @@ export default function ChatBox() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                sender: username,
+                username: username,
                 message: document.getElementById('messageInput').value,
             }),
         })
 
+        //Fetch messages again to update the chat box
         .finally(() => {
             fetchMessages();
         })
     }
 
+    const listMessages = data.map(message => 
+        <div className="message">
+           {message.username}: {message.message}
+        </div>
+    );
+
+    // useEffect(() => {
+    //     fetchMessages();
+    // }, []);
+
+    useEffect(() => {
+        let interval = setInterval(() => {
+            fetchMessages();
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    
+
     return (
         <div>
             <div className="messageContainer">
-                {data.map((message) => (
-                    <p key={message.id}>
-                        <strong>{message.sender}</strong>:
-                        {"   "}
-                        {message.message}
-                        <br />
-                    </p>
-                ))}
+                {listMessages}
             </div>
             <div className="inputContainer">
                 <label>
