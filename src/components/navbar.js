@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 function navbar() {
     return (
         <>
-            <nav className="navbar">
-                <div className="navbar-container">
-                    <Link to="/" className="navbar-logo">
-                        <i className="fas fa-leaf"></i> LiveChat
+            <nav>
+                <div>
+                    <Link to="/">
+                        <i></i>LiveChat
                     </Link>
                 </div> 
-                <h1 className="navbar-settings">Settings</h1>
+                <div class="text-white">Settings</div>
             </nav>
         </>
     )
