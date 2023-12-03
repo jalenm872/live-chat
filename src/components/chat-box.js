@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import './chat-box.css'
 import { useLocation } from "react-router-dom";
 
 export default function ChatBox() {

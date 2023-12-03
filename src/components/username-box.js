@@ -1,5 +1,4 @@
 import React from "react";
-import './username-box.css';
 import { useNavigate } from "react-router-dom";
 
 function UsernameBox() {
