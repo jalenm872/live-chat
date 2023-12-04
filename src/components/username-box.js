@@ -22,11 +22,11 @@ function UsernameBox() {
     }
 
     return (
-        <div className="inputContainer">
-            <label className="inputBox">
-                <input className="userInput"type="text" name="username" placeholder= "Enter Username"/>
+        <div class="flex justify-center pt-16">
+            <label>
+                <input class="outline" placeholder= "Enter Username"/>
                 <button 
-                    className="submitButton" 
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
                     onClick={submitButton}>
                         Start Chatting
                 </button>
