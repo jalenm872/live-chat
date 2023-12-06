@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { UsernameInput } from "./username-form";
 
 function UsernameBox() {
     const navigate = useNavigate();
@@ -22,16 +23,19 @@ function UsernameBox() {
     }
 
     return (
-        <div class="flex justify-center pt-16">
-            <label>
-                <input class="outline" placeholder= "Enter Username"/>
+        <div class="flex justify-center pt-16 pb-16">
+            <div>
+                <UsernameInput />
+            </div>
+            <div>
                 <button 
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
                     onClick={submitButton}>
                         Start Chatting
                 </button>
-            </label>
-        </div>
+            </div>
+            
+        </div> 
   );
 }
 
