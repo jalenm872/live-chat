@@ -5,7 +5,7 @@ import Dropdown from './dropdown';
 function navbar() {
     return (
         <>
-            <nav class="flex bg-black h-20 justify-between text-3xl pt-5">
+            <nav class="flex flex-row bg-black h-20 justify-between text-3xl pt-5">
                 <div></div>
                 <div>
                     <Link to="/" class="text-white">
@@ -13,7 +13,9 @@ function navbar() {
                     </Link>
                 </div> 
                 
-                <Dropdown />
+                <div class="pr-5">
+                    <Dropdown />
+                </div>
                 
 
             </nav>

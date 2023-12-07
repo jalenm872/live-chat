@@ -23,7 +23,7 @@ function UsernameBox() {
     }
 
     return (
-        <div class="flex justify-center pt-16 pb-16">
+        <div class="flex justify-center">
             <div>
                 <UsernameInput />
             </div>
