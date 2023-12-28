@@ -1,9 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { UsernameInput } from "./username-form";
+import { useEffect } from "react";
+// import { UsernameInput } from "./username-form";
+import { Input } from "@material-tailwind/react";
 
 function UsernameBox() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const track = document.querySelector('.userInput');
+        // have access to it
+        console.log(track)
+    }, []);
 
     function submitButton() {
         if (document.querySelector(".userInput").value === "") {
@@ -25,7 +33,7 @@ function UsernameBox() {
     return (
         <div class="flex justify-center">
             <div>
-                <UsernameInput />
+                <Input className="userInput" placeholder="Username" class="outline pl-2 mr-1 h-9 rounded"/>
             </div>
             <div>
                 <button 

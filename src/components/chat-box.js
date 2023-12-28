@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
+import { Input } from "@material-tailwind/react";
 
 export default function ChatBox() {
     const url = "http://127.0.0.1:8000/api/messages";
@@ -8,6 +9,14 @@ export default function ChatBox() {
 
     const {state} = useLocation();
     const { username } = state; // Read values passed on state for username
+
+    useEffect(() => {
+        let interval = setInterval(() => {
+            fetchMessages();
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     //Function to fetch messages from Postgress DB via API Get request
     //Returning a list of objects
@@ -27,6 +36,11 @@ export default function ChatBox() {
     //Function to add message to Postgress DB via API Post request
     function addMessage(){
 
+        if (document.querySelector(".messageInput").value === "") {
+            alert("Please enter a message");
+            return;
+        }
+
         fetch(url, {
             method: "POST",
             headers: {
@@ -34,7 +48,7 @@ export default function ChatBox() {
             },
             body: JSON.stringify({
                 username: username,
-                message: document.getElementById('messageInput').value,
+                message: document.querySelector('.messageInput').value,
             }),
         })
 
@@ -50,30 +64,17 @@ export default function ChatBox() {
         </div>
     );
 
-    // useEffect(() => {
-    //     fetchMessages();
-    // }, []);
-
-    useEffect(() => {
-        let interval = setInterval(() => {
-            fetchMessages();
-        }, 2000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    
 
     return (
-        <div>
-            <div className="messageContainer">
+        <div class="flex-col justify-center">
+            <div class="outline mb-5 ml-100">
                 {listMessages}
             </div>
-            <div className="inputContainer">
+            <div class="flex content-center">
                 <label>
-                    <input className="messageInput" id="messageInput" name="messageInput" pr="4.5rem" type="text" placeholder="Enter Message" aria-label="Enter Message" />
+                    <Input className="messageInput" class="outline py-2 px-4 rounded" pr="4.5rem" type="text" placeholder="Enter Message" aria-label="Enter Message" />
                 </label>
-                <input type="submit" value="Submit" onClick={addMessage} />
+                <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={addMessage}>Send</button>
             </div>
         </div>
     )

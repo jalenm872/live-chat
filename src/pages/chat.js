@@ -4,8 +4,7 @@ import ChatBox from "../components/chat-box";
 export function Chat() {
   return (
     <>
-      <h1 className="Text">Chat</h1>
-      <div className="chatOutline">
+      <div class="flex justify-center">
         <ChatBox className="messages"/>
       </div>
     </>
