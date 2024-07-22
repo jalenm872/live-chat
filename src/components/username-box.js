@@ -8,23 +8,23 @@ function UsernameBox() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const track = document.querySelector('.userInput');
+        const track = document.getElementById('userInput');
         // have access to it
         console.log(track)
     }, []);
 
     function submitButton() {
-        if (document.querySelector(".userInput").value === "") {
+        if (document.getElementById('userInput').value === "") {
             alert("Please enter a username");
             return;
         }
-        else if (document.querySelector(".userInput").value.length > 10) {
+        else if (document.getElementById('userInput').value.length > 10) {
             alert("Username must be less than 15 characters");
             
             return;
         }
-        else if (document.querySelector(".userInput").value.length < 10 && document.querySelector(".userInput").value !== "") {
-            navigate("/chat", {state: {username: document.querySelector(".userInput").value}});
+        else if (document.getElementById('userInput').value.length < 10 && document.getElementById('userInput').value !== "") {
+            navigate("/chat", {state: {username: document.getElementById('userInput').value}});
         }
 
 
@@ -33,7 +33,7 @@ function UsernameBox() {
     return (
         <div class="flex justify-center">
             <div>
-                <Input className="userInput" placeholder="Username" class="outline pl-2 mr-1 h-9 rounded"/>
+                <Input className="userInput" placeholder="Username" class="hover:bg-zinc-400 text-white pl-1 mr-1 h-10 rounded"/>
             </div>
             <div>
                 <button 

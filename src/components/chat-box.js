@@ -66,10 +66,10 @@ export default function ChatBox() {
 
 
     return (
-        <div class="flex-col justify-center">
-            <div class="outline mb-5 ml-100">
+        <div class="flex-col justify-center pl-100">
+            <div class="outline mb-5 pl-100 pr-px">
                 {listMessages}
-            </div>
+            </div>s
             <div class="flex content-center">
                 <label>
                     <Input className="messageInput" class="outline py-2 px-4 rounded" pr="4.5rem" type="text" placeholder="Enter Message" aria-label="Enter Message" />

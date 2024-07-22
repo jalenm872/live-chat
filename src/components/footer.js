@@ -3,7 +3,7 @@ import { Typography } from "@material-tailwind/react";
 export function Footer() {
   return (
     <footer className="flex w-full flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t 
-    border-white-50 py-6 text-center md:justify-between bg-black pl-5 pr-5">
+    border-white-50 py-6 text-center md:justify-between bg-cyan-800 pl-5 pr-5">
       <Typography color="white" className="font-normal">
         &copy; 2023 Jalen Mendoza
       </Typography>
